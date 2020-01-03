@@ -6,7 +6,7 @@
 # --------------------------------------------------------
 
 from utils.nms.cpu_nms import cpu_nms
-from utils.nms.gpu_nms import gpu_nms
+#from utils.nms.gpu_nms import gpu_nms
 import numpy as np
 
 
@@ -34,5 +34,5 @@ def nms(dets, thresh, force_cpu=False):
 def nms_detections(pred_boxes, scores, nms_thresh):
     dets = np.hstack((pred_boxes,
                       scores[:, np.newaxis])).astype(np.float32)
-    keep = nms(dets, nms_thresh)
+    keep = nms(dets, nms_thresh, True)
     return keep
